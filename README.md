@@ -6,7 +6,8 @@ This environment has been developed, tested and running inside Windows.
 ## Table of Contents
 
 - [Features](#features)
-- [Pre-Requisistes](#prerequisites)
+- [Pre-Requisistes](#pre-requisites)
+- [Setup Instructions](#setup-instructions)
 - [References](#references)
 
 ## Features
@@ -21,6 +22,21 @@ This environment has been developed, tested and running inside Windows.
 ## Pre-Requisites
 
 - For Gmail SMTP relay, you will need to [enable 2FA on your Google account](https://myaccount.google.com/security) and then [Generate App Password](https://myaccount.google.com/apppasswords). Use App Password, not your real password.
+
+## Setup Instructions
+
+1. [Enable 2FA on your Google account](https://myaccount.google.com/security)
+2. [Generate App Password](https://myaccount.google.com/apppasswords).
+3. Edit msmtprc file. Change email and password. Use App Password, not your real password.
+```
+from           XXX@gmail.com
+user           XXX@gmail.com
+password       XXX
+```
+4. Build the Image
+```docker-compose up --build -d```
+5. Execute the newly container interactive terminal
+```docker exec -it ubuntu-dev bash```
 
 ## References
 
