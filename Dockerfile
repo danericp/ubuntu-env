@@ -21,14 +21,6 @@ RUN apt-get update && \
         vim \
     && apt-get clean
 
-# # Append custom prompt + hooks to .bashrc
-# RUN echo && \
-#     echo '\n# Custom prompt' >> /root/.bashrc && \
-#     echo 'export PS1="\[\e[31m\][DOCKER]\[\e[0m\] \u@\h:\w\$ "' >> /root/.bashrc && \
-#     echo 'trap '\''echo "[preexec] $BASH_COMMAND"'\'' DEBUG' >> /root/.bashrc && \
-#     # echo 'PROMPT_COMMAND='\''echo "[precmd] Ready"'\''' >> /root/.bashrc && \
-#     echo
-
 # Copy config
 COPY init/msmtprc /etc/msmtprc
 # Copy customized prompt script
