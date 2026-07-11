@@ -7,8 +7,9 @@ f_prompt_custom() {
     NUM_FILS=$(find . -maxdepth 1 -type f ! -name ".*" | wc -l | xargs)
     NUM_HDIRS=$(find . -maxdepth 1 -type d ! -path "." ! -path ".." -name ".*" | wc -l | xargs)
     NUM_HFILS=$(find . -maxdepth 1 -type f -name ".*" | wc -l | xargs)
+    NUM_LINKS=$(find . -maxdepth 1 -type l | wc -l | xargs)
     # Customized PROMPT
-    export PS1="\[\e[31m\][DOCKER]\[\e[0m\] \[\e[32m\]\u@\h:\w\[\e[0m\]:\[\e[34m\]F=${NUM_FILS},HF=${NUM_HFILS},D=${NUM_DIRS},HD=${NUM_HDIRS}\[\e[0m\]> "
+    export PS1="\[\e[31m\][DOCKER]\[\e[0m\] \[\e[32m\]\u@\h:\w\[\e[0m\]:\[\e[34m\]F=${NUM_FILS},HF=${NUM_HFILS},D=${NUM_DIRS},HD=${NUM_HDIRS},L=${NUM_LINKS}\[\e[0m\]> "
 }
 
 EOF
