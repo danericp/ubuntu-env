@@ -30,9 +30,9 @@ RUN apt-get update && \
 #     echo
 
 # Copy config
-COPY msmtprc /etc/msmtprc
+COPY init/msmtprc /etc/msmtprc
 # Copy customized prompt script
-COPY custom_bashrc.sh /tmp/
+COPY init/custom_bashrc.sh /tmp/
 
 # Secure config
 RUN chmod 600 /etc/msmtprc
