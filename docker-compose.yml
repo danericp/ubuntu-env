@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  ubuntu-player:
+  ubuntu-dev:
     build: .
-    container_name: ubuntu-player
+    container_name: ubuntu-dev
     tty: true
