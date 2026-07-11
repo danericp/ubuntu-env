@@ -27,7 +27,7 @@ This environment has been developed, tested and running inside Windows.
 
 1. [Enable 2FA on your Google account](https://myaccount.google.com/security)
 2. [Generate App Password](https://myaccount.google.com/apppasswords).
-3. Edit msmtprc file. Change email and password. Use App Password, not your real password.
+3. Edit [msmtprc](./init/msmtprc) file. Change email and password. Use App Password, not your real password.
 ```
 from           XXX@gmail.com
 user           XXX@gmail.com
