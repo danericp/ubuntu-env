@@ -17,9 +17,16 @@ RUN apt-get update && \
     apt-get install -y \
         bash \
         curl \
-        git \
+        git grep \
         tree \
         vim \
+    && apt-get clean
+
+# Install Developer Packages
+RUN apt-get update && \
+    apt-get install -y \
+        postgresql-client \
+        python3 python3-pip python3-venv \
     && apt-get clean
 
 # Copy config

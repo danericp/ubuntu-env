@@ -8,6 +8,7 @@ This environment has been developed, tested and running inside Windows.
 - [Features](#features)
 - [Pre-Requisistes](#pre-requisites)
 - [Setup Instructions](#setup-instructions)
+- [CLI Commands](#cli-commands)
 - [References](#references)
 
 ## Features
@@ -16,6 +17,7 @@ This environment has been developed, tested and running inside Windows.
 |-|-|
 | Ubuntu Environment | Version 22.04@sha256:0d779ea97881505f5ef0039336ee85edba27519bdba968c284c86ee066a973c8 |
 | MSTP | For emailing using mail, mailx and sendmail |
+| PostgreSQL | Version postgres:18.4@sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f |
 | Prompt | Customized for better terminal experience |
 | Mailing | Uses Gmail for SMTP relay |
 
@@ -33,10 +35,23 @@ from           XXX@gmail.com
 user           XXX@gmail.com
 password       XXX
 ```
+3. (Optional)  Edit [docker-compose.yml](docker-compose.yml) file.
+```
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: mydb
+```
 4. Build the Image
 ```docker-compose up --build -d```
 5. Execute the newly container interactive terminal
 ```docker exec -it ubuntu-dev bash```
+
+## CLI Commands
+
+| Command | Description |
+|-|-|
+| ```psql -h postgres -U admin -d mydb``` | Connect to PostgreSQL. You can change the default credentials in [docker-compose.yml](docker-compose.yml). |
+| ```echo -e "To: user@email.com\nSubject: Test Email\n\nThis is the body." \| sendmail -t``` | Test sendmail function |
 
 ## References
 
