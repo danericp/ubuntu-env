@@ -6,10 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Instal MSMTP Packages
 RUN apt-get update && \
     apt-get install -y \
-        mailutils \
-        msmtp \
-        msmtp-mta \
         ca-certificates \
+        mailutils msmtp msmtp-mta \
     && apt-get clean
 
 # Install Essential Packages
@@ -29,14 +27,16 @@ RUN apt-get update && \
         python3 python3-pip python3-venv \
     && apt-get clean
 
-# Copy config
+# Copy init Files
 COPY init/msmtprc /etc/msmtprc
-# Copy customized prompt script
-COPY init/custom_bashrc.sh /tmp/
+COPY init/setup_cli.sh /tmp/
+COPY init/setup_python.sh /tmp/
 
 # Secure config
 RUN chmod 600 /etc/msmtprc
 # Run customized prompt script
-RUN bash /tmp/custom_bashrc.sh && rm /tmp/custom_bashrc.sh
+RUN bash /tmp/setup_cli.sh && rm /tmp/setup_cli.sh
+# Run Python installations
+RUN bash /tmp/setup_python.sh && rm /tmp/setup_python.sh
 
 CMD ["/bin/bash"]
