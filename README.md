@@ -17,9 +17,10 @@ This environment has been developed, tested and running inside Windows.
 |-|-|
 | Ubuntu Environment | Version 22.04@sha256:0d779ea97881505f5ef0039336ee85edba27519bdba968c284c86ee066a973c8 |
 | MSTP | For emailing using mail, mailx and sendmail |
-| PostgreSQL | Version postgres:18.4@sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f |
+| Database | Uses postgres:18.4 and pgadmin:9.16 for the GUI |
 | Prompt | Customized for better terminal experience |
 | Mailing | Uses Gmail for SMTP relay |
+| App | Added scripts for inserting to PosgreSQL |
 
 ## Pre-Requisites
 
@@ -35,15 +36,19 @@ from           XXX@gmail.com
 user           XXX@gmail.com
 password       XXX
 ```
-3. (Optional)  Edit [docker-compose.yml](docker-compose.yml) file.
+4. Edit [docker-compose.yml](docker-compose.yml) file. Change the default credentials for postgres and pgadmin.
 ```
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: mydb
 ```
-4. Build the Image
+```
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+```
+5. Build the Image
 ```docker-compose up --build -d```
-5. Execute the newly container interactive terminal
+6. Execute the newly container interactive terminal
 ```docker exec -it ubuntu-dev bash```
 
 ## CLI Commands
@@ -52,6 +57,7 @@ password       XXX
 |-|-|
 | ```psql -h postgres -U admin -d mydb``` | Connect to PostgreSQL. You can change the default credentials in [docker-compose.yml](docker-compose.yml). |
 | ```echo -e "To: user@email.com\nSubject: Test Email\n\nThis is the body." \| sendmail -t``` | Test sendmail function |
+| ```psql -h postgres -U user -d database -f file.sql``` | Run a file in PostgreSQL |
 
 ## References
 
