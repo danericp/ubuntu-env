@@ -8,6 +8,7 @@ This environment has been developed, tested and running inside Windows.
 - [Features](#features)
 - [Pre-Requisistes](#pre-requisites)
 - [Setup Instructions](#setup-instructions)
+- ["app" Folder Contents](#app-folder-contents)
 - [CLI Commands](#cli-commands)
 - [References](#references)
 
@@ -51,6 +52,12 @@ password       XXX
 ```docker-compose up --build -d --force-recreate```
 6. Execute the newly container interactive terminal
 ```docker exec -it ubuntu-dev bash```
+
+## "app" Folder Contents
+
+| App | Description |
+|-|-|
+| ```./psql_insert_fake_users.sh``` | Compiled scripts for PostgreSQL tb_users setup. |
 
 ## CLI Commands
 
