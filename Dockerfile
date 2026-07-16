@@ -16,7 +16,7 @@ RUN apt-get update && \
         bash \
         curl \
         git grep \
-        tree \
+        tree tzdata \
         vim \
     && apt-get clean
 

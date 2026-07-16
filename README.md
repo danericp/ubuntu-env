@@ -48,6 +48,7 @@ password       XXX
 ```
 5. Build the Image
 ```docker-compose up --build -d```
+```docker-compose up --build -d --force-recreate```
 6. Execute the newly container interactive terminal
 ```docker exec -it ubuntu-dev bash```
 

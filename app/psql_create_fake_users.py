@@ -6,7 +6,7 @@ from datetime import date, timedelta
 fake = Faker()
 
 OUTPUT_FILE = "fake_users.csv"
-NUM_RECORDS = 10  # change this as needed
+NUM_RECORDS = 100  # change this as needed
 
 def random_dob(min_age=18, max_age=65):
     today = date.today()
