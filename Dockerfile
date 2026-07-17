@@ -14,9 +14,11 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y \
         bash \
-        curl \
+        coreutils curl \
         git grep \
+        jq \
         tree tzdata \
+        uuid-runtime \
         vim \
     && apt-get clean
 
