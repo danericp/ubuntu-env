@@ -16,7 +16,7 @@ echo "</tr></thead>">>${OUT_HTML}
 echo "<tbody><tr>">>${OUT_HTML}
 echo "<th> ID </th>">>${OUT_HTML}
 echo "<th> First Name </th>">>${OUT_HTML}
-echo "<th> Lastn Name </th>">>${OUT_HTML}
+echo "<th> Last Name </th>">>${OUT_HTML}
 echo "<th> DOB </th>">>${OUT_HTML}
 echo "<th> Email </th>">>${OUT_HTML}
 echo "<th> Gender </th>">>${OUT_HTML}
@@ -24,7 +24,7 @@ echo "</tr><tr>">>${OUT_HTML}
 echo "<td> 1 </td>">>${OUT_HTML}
 echo "<td> Luffy </td>">>${OUT_HTML}
 echo "<td> Monkey </td>">>${OUT_HTML}
-echo "<td> ??? </td>">>${OUT_HTML}
+echo "<td> May 5 </td>">>${OUT_HTML}
 echo "<td> one.piece@gmail.com </td>">>${OUT_HTML}
 echo "<td> m </td>">>${OUT_HTML}
 echo "</tr></tbody>">>${OUT_HTML}
