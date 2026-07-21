@@ -8,6 +8,9 @@ This environment has been developed, tested and running inside Windows.
 - [Features](#features)
 - [Pre-Requisistes](#pre-requisites)
 - [Setup Instructions](#setup-instructions)
+- [GMail msmtp](#for-google-mail-msmtp)
+- [Microsoft Outlook msmtp](#for-outlook-msmtp)
+- [Zoho msmtp](#for-zoho-mail-msmtp)
 - ["app" Folder Contents](#app-folder-contents)
 - [CLI Commands](#cli-commands)
 - [References](#references)
@@ -29,14 +32,76 @@ This environment has been developed, tested and running inside Windows.
 
 ## Setup Instructions
 
-1. [Enable 2FA on your Google account](https://myaccount.google.com/security)
-2. [Generate App Password](https://myaccount.google.com/apppasswords).
-3. Edit [msmtprc](./init/msmtprc) file. Change email and password. Use App Password, not your real password.
+1. Setup your email msmtp. 
+
+### For Google Mail msmtp
+
+- [Enable 2FA on your Google account](https://myaccount.google.com/security)
+- [Generate App Password](https://myaccount.google.com/apppasswords).
+- Edit [msmtprc](./init/msmtprc) file. Change email and password. Use App Password, not your real password.
 ```
-from           XXX@gmail.com
-user           XXX@gmail.com
-password       XXX
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        /var/log/msmtp.log
+
+account        gmail
+host           smtp.gmail.com
+port           587
+from           <email>@gmail.com
+user           <email>@gmail.com
+password       <App Password>
+
+account default : gmail
 ```
+
+### For Outlook msmtp
+
+```
+# For Outlook MSMTPRC
+defaults
+auth on
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile /var/log/msmtp.log
+
+# Outlook / Office 365 settings
+account outlook
+host smtp.office365.com
+port 587
+user <email>@outlook.com
+password "your-password-or-app-password"
+from <email>@outlook.com
+
+# Set as default
+account default : outlook
+```
+
+### For Zoho Mail msmtp
+
+- Go to [Accounts > Security > App Passwords](https://accounts.zoho.in/home#security/app_password) and generate a newly app name and app password.
+- Go to your [Mail Account Settings](https://mail.zoho.in/zm/#settings/mailaccounts/) and note down the Server/Host.
+- Edit [msmtprc](./init/msmtprc) file using below content. Change the email and password. Use App Password, not your real password.
+```
+# Set default values for all accounts
+defaults
+auth             on
+tls              on
+tls_starttls     on
+tls_trust_file   /etc/ssl/certs/ca-certificates.crt
+logfile          /var/log/msmtp.log
+
+# Zoho Mail Account
+account          zoho
+host             <Host>
+port             587
+from             <Email>@zohomail.in
+user             <Email>@zohomail.in
+password         <App Password>
+```
+
 4. Edit [docker-compose.yml](docker-compose.yml) file. Change the default credentials for postgres and pgadmin.
 ```
       POSTGRES_USER: admin

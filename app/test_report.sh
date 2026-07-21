@@ -33,4 +33,4 @@ echo "</table><br>">>${OUT_HTML}
 echo "</html>">>${OUT_HTML}
 
 ARGS+=("fake_users.csv")
-function_send_email ${OUT_HTML} ${STR_EMAIL_FROM} ${STR_EMAIL_TO} "Users Report"
+function_send_email ${OUT_HTML} ${FROM_MAIL} ${STR_EMAIL_TO} "Users Report"

@@ -17,7 +17,7 @@ function_send_email()
     (
         echo "Date: $(date -R)"
         echo "To: ${MAIL_TO}"
-        echo "From: ${MAIL_FROM}"
+        echo "From: \"${FROM_NAME}\" <${FROM_MAIL}>"
         echo "Cc: ${MAIL_CC}"
         echo "Bcc: ${MAIL_BCC}"
         echo "Subject: ${MAIL_SUBJ}"
