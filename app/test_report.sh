@@ -2,7 +2,8 @@
 
 . ./lib/app_lib.sh
 
-OUT_HTML=./test_report.html>${OUT_HTML}
+OUT_NAME=${STR_TEST_REPORT_NAME}
+OUT_HTML=./${OUT_NAME}.html>${OUT_HTML}
 
 echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://w3.org\">">>${OUT_HTML}
 echo "<html>">>${OUT_HTML}
@@ -32,4 +33,4 @@ echo "</table><br>">>${OUT_HTML}
 echo "</html>">>${OUT_HTML}
 
 ARGS+=("fake_users.csv")
-function_send_email ${OUT_HTML} daneric.pelayo@gmail.com daneric.pelayo@outlook.com "Test Subject"
+function_send_email ${OUT_HTML} ${STR_EMAIL_FROM} ${STR_EMAIL_TO} "Users Report"

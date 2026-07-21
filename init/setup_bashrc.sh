@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Enforce read-only for root for /run/secrets
+echo "# Enforce read-only for root for /run/secrets" >> ~/.bashrc
+echo "chmod 400 /run/secrets/*" >> ~/.bashrc
+echo "chmod 400 /run/secrets" >> ~/.bashrc
+
 cat << 'EOF' >> ~/.bashrc
 
 f_prompt_custom() {

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+STR_EMAIL_FROM=${EMAIL_FROM}
+STR_EMAIL_TO=${EMAIL_TO}
+STR_TEST_REPORT_NAME=test_report
+
 function_send_email()
 {
     MAIL_BODY=${1}

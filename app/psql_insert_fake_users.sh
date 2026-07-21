@@ -1,10 +1,12 @@
 #!/bin/bash
 
-STR_HOST=postgres
-STR_PORT=5432
-STR_DB=mydb
-STR_USER=admin
-read -sp "Enter Password: " STR_PASS
+INT_USERS=${FAKE_USERS_COUNT}
+STR_HOST=${DB_HOST}
+STR_PORT=${DB_PORT}
+STR_DB=${DB_NAME}
+STR_USER=$(cat /run/secrets/db_user)
+
+read -sp "Enter Password (Default is \"secret\"): " STR_PASS
 
 python3 psql_create_fake_users.py
 
@@ -20,8 +22,14 @@ psql -h ${STR_HOST} -U ${STR_USER} -d ${STR_DB} -c "\copy tb_users(first_name, l
 echo "PSQL RUN PL/PSQL Function"
 psql -h ${STR_HOST} -U ${STR_USER} -d ${STR_DB} -c "SELECT import_csv_and_loop_insert()"
 
-# DELETING PASSWORD
-# rm -v ~/.pgpass # Verbosed
+echo "PSQL Test Heredocs"
+psql -A -F "|" -h ${STR_HOST} -d ${STR_DB} -t -U ${STR_USER} > output.txt << 'EOF'
+SELECT first_name, last_name
+FROM tb_users
+WHERE gender = 'm'
+ORDER BY date_of_birth DESC;
+EOF
+
 rm  ~/.pgpass
 if [[ $? -eq 0 ]]; then
     echo "Done"

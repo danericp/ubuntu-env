@@ -1,0 +1,14 @@
+{
+  "csv_output_name": "fake_users",
+  "csv_row_count": 50,
+  "user_age_min": 18,
+  "user_age_max": 65,
+  "version": "1.0",
+  "debug": true,
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "user": "admin",
+    "password": "secret"
+  }
+}

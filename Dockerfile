@@ -32,13 +32,13 @@ RUN apt-get update && \
 # Copy init Files
 COPY init/msmtprc /etc/msmtprc
 COPY init/requirements.txt /tmp/
-COPY init/setup_cli.sh /tmp/
+COPY init/setup_bashrc.sh /tmp/
 
 # Secure config
 RUN chmod 600 /etc/msmtprc
 # Run customized prompt script
-RUN bash /tmp/setup_cli.sh && \
-    rm /tmp/setup_cli.sh
+RUN bash /tmp/setup_bashrc.sh && \
+    rm /tmp/setup_bashrc.sh
 # Run Python Package Installation
 RUN python3 -m pip install -r /tmp/requirements.txt && \
     rm /tmp/requirements.txt

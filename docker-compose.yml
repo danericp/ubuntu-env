@@ -7,10 +7,15 @@ services:
     tty: true
     depends_on:
       - postgres
+    env_file:
+      - ./init/.env
     environment:
       - TZ=America/New_York
     networks:
       - app-network
+    secrets:
+      - db_user
+      - db_password
     volumes:
       - ./app:/app
   postgres:
@@ -18,9 +23,9 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: mydb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
@@ -33,8 +38,8 @@ services:
     container_name: pgadmin_ui
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "5050:80"
     depends_on:
@@ -50,3 +55,9 @@ volumes:
 
 networks:
   app-network:
+
+secrets:
+  db_user:
+    file: ./secrets/db_user.txt
+  db_password:
+    file: ./secrets/db_password.txt
