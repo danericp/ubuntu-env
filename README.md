@@ -5,7 +5,7 @@ This environment has been developed, tested and running inside Windows.
 
 ## Table of Contents
 
-- [Features](#features)
+- [Versions](#versions)
 - [Pre-Requisistes](#pre-requisites)
 - [Setup Instructions](#setup-instructions)
 - [GMail msmtp](#for-google-mail-msmtp)
@@ -15,16 +15,14 @@ This environment has been developed, tested and running inside Windows.
 - [CLI Commands](#cli-commands)
 - [References](#references)
 
-## Features
+## Versions
 
-| Feature | Description |
+| Component | Version |
 |-|-|
-| Ubuntu Environment | Version 22.04@sha256:0d779ea97881505f5ef0039336ee85edba27519bdba968c284c86ee066a973c8 |
-| MSTP | For emailing using mail, mailx and sendmail |
-| Database | Uses postgres:18.4 and pgadmin:9.16 for the GUI |
-| Prompt | Customized for better terminal experience |
-| Mailing | Uses Gmail for SMTP relay |
-| App | Added scripts for inserting to PosgreSQL |
+| Java | 17 |
+| Oracle Instant Client | 23.8.0.25.04 |
+| Python | [3.12.10](https://www.python.org/downloads/release/python-31210/) |
+| Ubuntu | [22.04](https://hub.docker.com/layers/library/ubuntu/22.04/images/sha256-0d779ea97881505f5ef0039336ee85edba27519bdba968c284c86ee066a973c8) |
 
 ## Pre-Requisites
 
@@ -131,10 +129,3 @@ password         <App Password>
 | ```psql -h postgres -U admin -d mydb``` | Connect to PostgreSQL. You can change the default credentials in [docker-compose.yml](docker-compose.yml). |
 | ```echo -e "To: user@email.com\nSubject: Test Email\n\nThis is the body." \| sendmail -t``` | Test sendmail function |
 | ```psql -h postgres -U user -d database -f file.sql``` | Run a file in PostgreSQL |
-
-## References
-
-| Link |
-|-|
-| [index : cloud-images/+oci/ubuntu-base](https://git.launchpad.net/cloud-images/+oci/ubuntu-base/tree/oci/index.json?h=refs/tags/dist-jammy-amd64-20260627-01085b33&id=01085b3371ecd07b72cb903983ce84e6a9ba89f0) |
-| [Docker Hub - ubuntu](https://hub.docker.com/_/ubuntu) |
